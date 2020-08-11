@@ -103,17 +103,17 @@ def compileHTML(directory,filename,mode):
                     
                 for key,value in args.items():
                     content[i] = content[i].replace("$"+key,value)
-                content[i] = content[i].encode('utf-8','ignore')  
+                #content[i] = content[i].encode('utf-8','ignore')  
                   
             except:
                 print("unable to include file: ",layout_file)     
 
     content = ''.join(content)
     try:     
-        fout = open(directory+"/dist/"+filename.replace(".htmlx",".html"),"w+")
+        fout = open("dist/"+filename.replace(".htmlx",".html"),"w+")
         fout.write(content)         
     except:
-        print("unable to open file",directory+"/dist/"+filename.replace(".htmlx",".html"))            
+        print("unable to open file","dist/"+filename.replace(".htmlx",".html"))            
     
     return "Sucess..."    
 
