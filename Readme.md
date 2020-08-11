@@ -49,5 +49,3 @@ Arguments
 -c <folder>: Compile the folder and generate files in dist
 
 
-## Known Issues
-Currently works only with Python2
