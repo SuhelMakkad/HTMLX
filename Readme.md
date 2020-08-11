@@ -4,7 +4,7 @@ When designing complex webpages, it becomes important to reuse components and ma
 
 On server-side most web frameworks support this using {{include}} statements; however this is not easily available on client side.  
 
-HTMLX python based pre-processor that allows you to write HTML files and use dynamic statements like ##include footer.html Which then generates html files in the dist folder without any JS dependencies. 
+HTMLX python based pre-processor that allows you to write HTML files and use dynamic statements like `##include footer.html` Which then generates html files in the dist folder without any JS dependencies. 
 
 ## Install Dependencies
 
