@@ -22,9 +22,9 @@ project_folder
 |   |   index.htmlx
 |   |   about.htmlx
 |   |   footer.html
-	|───dist
-	|   |   index.html
-	|   |   about.html
+    |───dist
+    |   |   index.html
+    |   |   about.html
 ```
 
 1. Create  a folder called static. Inside this folder create files called index.htmlx   about.htmlx  footer.html
