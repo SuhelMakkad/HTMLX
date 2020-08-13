@@ -110,10 +110,10 @@ def compileHTML(directory,filename,mode):
 
     content = ''.join(content)
     try:     
-        fout = open("dist/"+filename.replace(".htmlx",".html"),"w+")
+        fout = open(directory+"/dist/"+filename.replace(".htmlx",".html"),"w+")
         fout.write(content)         
     except:
-        print("unable to open file","dist/"+filename.replace(".htmlx",".html"))            
+        print("unable to open file",directory+"/dist/"+filename.replace(".htmlx",".html"))            
     
     return "Sucess..."    
 

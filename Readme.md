@@ -16,16 +16,15 @@ pip install watchdog
 Download the HTMLX.py and place it in your project folder 
 ```
 project_folder
-│   htmlx.py
+|   htmlx.py
 |───static
 |   |   
-│   |   index.htmlx
+|   |   index.htmlx
 |   |   about.htmlx
 |   |   footer.html
-│
-└───dist
-│   │   index.html
-│   │   about.html
+	|───dist
+	|   |   index.html
+	|   |   about.html
 ```
 
 1. Create  a folder called static. Inside this folder create files called index.htmlx   about.htmlx  footer.html
