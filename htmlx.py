@@ -98,8 +98,11 @@ def compileHTML(directory,filename,mode):
             try:
                 layout_file = os.path.join(directory, value) 
                 content[i] = open(layout_file).read()
-                if mode == "prod":
-                    content[i] = strip_lines(content[i])
+                layout_content = content[i].split("\n")
+                for j in range(len(layout_content)):
+                    if mode != "debug":
+                        layout_content[j] = strip_lines(layout_content[j])
+                content[i] = "\n".join(layout_content)
                     
                 for key,value in args.items():
                     content[i] = content[i].replace("$"+key,value)
