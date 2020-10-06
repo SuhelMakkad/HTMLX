@@ -25,7 +25,7 @@ class Watcher:
 
 
 class Handler(FileSystemEventHandler):
-   
+    
     @staticmethod
     def on_any_event(event):
         if event.is_directory:
@@ -40,7 +40,8 @@ class Handler(FileSystemEventHandler):
             path, fname = os.path.split(event.src_path)
             if "dist" not in path:
                 print("Received modified event - %s." % event.src_path)
-                complileDir(path,mode="debug")
+                global mode
+                complileDir(path,mode=mode)
 
 def strip_lines(content):
     exclude_list = [r"console\.log\(.*\);?","debugger;?"]
@@ -135,21 +136,20 @@ def complileDir(directory,mode):
 
 if __name__=="__main__":
     try:
+        if sys.argv[4] == "prod":
+            mode = "prod"
+        elif sys.argv[4] == "debug":
+            mode = "debug"
+        else:
+            print("Unkown mode. use -m debug or prod",sys.argv[4] )
+            sys.exit(0)
+            
         if sys.argv[1] == "-w": 
             w = Watcher(sys.argv[2])
             w.run() 
         else:
-            if sys.argv[4] == "prod":
-                mode = "prod"
-                complileDir(sys.argv[2],mode)
-            elif sys.argv[4] == "debug":
-                mode = "debug"
-                complileDir(sys.argv[2],mode)
-            else:
-                print("Unkown mode. use -m debug or prod",sys.argv[4] )
-
-            
-
-    except:
+            complileDir(sys.argv[2],mode)
+    
+    except Exception:
         print("htmlx -w[Watch] -c[Complile] directory -m[prod | debug]")
         
