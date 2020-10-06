@@ -43,8 +43,8 @@ class Handler(FileSystemEventHandler):
                 complileDir(path,mode="debug")
 
 def strip_lines(content):
-    exclude_list = [r"console\.log\(.*\)"]
-    m = re.match("|".join(exclude_list),content)
+    exclude_list = [r"console\.log\(.*\);?","debugger;?"]
+    m = re.search("|".join(exclude_list),content)
     if m:
         print("Found expression in exclude_list",m.group(0))
         content = content.replace(m.group(0),"") ##Replace matched with empty string
@@ -63,7 +63,7 @@ def compileHTML(directory,filename,mode):
     # This is because the lines contain the newline character '\n'. 
     print("Got mode",mode)
     for i in range(len(content)):
-        if mode == "prod":
+        if mode != "debug":
             content[i] = strip_lines(content[i])
 
 
