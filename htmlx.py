@@ -112,6 +112,25 @@ def compileHTML(directory,filename,mode):
             except:
                 print("unable to include file: ",layout_file)     
 
+        if command == 'if':
+            statement = expression[3:].replace(' ', '')
+            condition = statement.split('==')[0]
+
+            if condition == 'mode':
+                try:
+                    modex = eval(statement.split('==')[1])
+                    j = 1
+                    while content[i+j].strip() != '##endif':
+                        if modex != mode:
+                            content[i + j] = ''
+                        j += 1
+
+                    # removing if and endif
+                    content[i] = ''
+                    content[i + j] = ''
+                except:
+                    print("Somthing went wrong in if statement", statement)
+
     content = ''.join(content)
     try:     
         fout = open(directory+"/dist/"+filename.replace(".htmlx",".html"),"w+")
@@ -119,7 +138,7 @@ def compileHTML(directory,filename,mode):
     except:
         print("unable to open file",directory+"/dist/"+filename.replace(".htmlx",".html"))            
     
-    return "Sucess..."    
+    return "Success..."    
 
 
 def complileDir(directory,mode):    
